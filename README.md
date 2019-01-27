@@ -4,12 +4,21 @@ PWNboard for RIT redteam engagements and competitions
 Modified version of ztgrace/pwnboard
 
 # Running the PWNboard
+## Docker
+To run PWNboard with Docker-Compose, run the following commands:
+```
+openssl req -x509 -nodes -new -batch -keyout docker/nginx/ssl/server.key -out docker/nginx/ssl/server.crt
+python3 scripts/generate_config.py		# copy this output to topology.json
+cp config-sample.yml config.yml			# make your necessary modifications; "server: localhost" should be changed to "server: redis"
+docker-compose up -d
+```
+
 ## Install
 #### Flask
 Install all the needed packages and the pwnboard code
 ```
 apt-get install -y redis-server python3-redis python3-flask python3-yaml
-git clone https://github.com/micahjmartin/pwnboard /var/www/pwnboard
+git clone https://github.com/RITRedteam/pwnboard /var/www/pwnboard
 chown -R www-data:www-data /var/www/pwnboard
 ```
 
@@ -138,4 +147,4 @@ run `systemctl start pwnboard`
 * Click on a host to track the beacons
 
 
-![pwnboard](https://raw.githubusercontent.com/micahjmartin/pwnboard/master/img/PWNboard.png)
+![pwnboard](https://raw.githubusercontent.com/RITRedteam/pwnboard/master/img/PWNboard.png)
