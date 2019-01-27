@@ -14,6 +14,4 @@ COPY config.yml /etc/pwnboard/config.yml
 COPY slack_token /etc/pwnboard/slack_token
 WORKDIR /opt/pwnboard/
 
-#CMD ["service", "redis-server", "start"]
-#CMD service redis-server start
 ENTRYPOINT ["python3", "/opt/pwnboard/pwnboard.py"]
